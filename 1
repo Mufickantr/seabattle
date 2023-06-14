@@ -1,0 +1,44 @@
+// Инициализируем новый объект Scanner для чтения пользовательского ввода.
+Scanner input = new Scanner(System.in);
+
+// Создаем новую игру Морской бой.
+Battleship game = new Battleship();
+
+// Отображаем стартовое сообщение.
+System.out.println("Добро пожаловать в игру Морской бой!");
+
+// Цикл игры.
+while (!game.isGameOver()) {
+
+  // Отображаем текущее состояние игры.
+  System.out.println(game);
+
+  // Запрашиваем у пользователя ввод координат выстрела.
+  System.out.print("Введите координаты выстрела (например, B2): ");
+  String guess = input.nextLine();
+
+  // Выстрел по указанным координатам.
+  boolean hit = game.shoot(guess);
+
+  // Если выстрел попал по кораблю, выводим сообщение.
+  if (hit) {
+    System.out.println("Попал!");
+  }
+  // Иначе, выводим сообщение о промахе.
+  else {
+    System.out.println("Мимо!");
+  }
+}
+
+// Отображаем конечное сообщение.
+System.out.println(game);
+
+// Выводим сообщение о результате игры.
+if (game.isWinner()) {
+  System.out.println("Вы выиграли!");
+}
+else {
+  System.out.println("Вы проиграли!");
+}
+}
+}
